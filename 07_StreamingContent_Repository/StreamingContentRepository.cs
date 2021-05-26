@@ -34,6 +34,56 @@ namespace _07_StreamingContent_Repository
             bool wasAdded = (_contentDirectory.Count > startingCount) ? true : false;
             return wasAdded;
         }
+
+        public string IsDivisibleByThree(double num)
+        {
+            if ((num % 3) == 0)
+            {
+                return "is divisible";
+            }
+            else
+            {
+                return "isnt divisible";
+            }
+        }
+
+ 
+
+        public void method()
+        {
+            int[] allNums = { 1, 2, 3, 4, 5 };
+
+            int index = 0;
+
+            while (index <= 5)
+            {
+                Console.WriteLine($"Last index {allNums[index]}");
+            }
+
+        }
+
+        public double ReturnSum(List<double> d)
+        {
+            double totalSum = 0;
+            foreach (double num in d)
+            {
+                totalSum += num;
+            }
+            return totalSum;
+        }
+
+        public void Table()
+        {
+            List<int> tableNumbers = new List<int>();
+            foreach(int firstNum in tableNumbers)
+            {
+                for(int secondNum = 1; secondNum <= 12; secondNum++)
+                {
+                    int total = firstNum * secondNum;
+                    Console.WriteLine($"{firstNum} X {secondNum} = {total}");
+                }
+            }
+        }
         //show
 
         //episode
@@ -41,7 +91,7 @@ namespace _07_StreamingContent_Repository
         //read all
         //content read all
 
-            public List<StreamingContent> GetContents()
+        public List<StreamingContent> GetContents()
         {
             return _contentDirectory;
         }
@@ -50,7 +100,7 @@ namespace _07_StreamingContent_Repository
         public List<Movie> GetMovies()
         {
             List<Movie> allMovies = new List<Movie>();
-            foreach(StreamingContent content in _contentDirectory)
+            foreach (StreamingContent content in _contentDirectory)
             {
                 if (content is Movie)
                 {
@@ -65,9 +115,9 @@ namespace _07_StreamingContent_Repository
         {
             List<Show> allShows = new List<Show>();
 
-            foreach(StreamingContent content in _contentDirectory)
+            foreach (StreamingContent content in _contentDirectory)
             {
-                if(content.GetType() == typeof(Show))
+                if (content.GetType() == typeof(Show))
                 {
                     allShows.Add((Show)content);
                 }
@@ -85,7 +135,7 @@ namespace _07_StreamingContent_Repository
         {
             foreach (StreamingContent content in _contentDirectory)
             {
-                if(content.Title.ToLower() == title.ToLower())
+                if (content.Title.ToLower() == title.ToLower())
                 {
                     return content;
                 }
@@ -97,9 +147,9 @@ namespace _07_StreamingContent_Repository
 
         public Movie GetMovieByTitle(string title)
         {
-            foreach(StreamingContent movie in _contentDirectory)
+            foreach (StreamingContent movie in _contentDirectory)
             {                            //using 'is' to make sure movie 'is' fo class type Movie
-                if(movie.Title.ToLower() == title.ToLower() && movie is Movie)
+                if (movie.Title.ToLower() == title.ToLower() && movie is Movie)
                 {
                     //using 'as' to cast movie into Movie
                     return movie as Movie;
@@ -113,9 +163,9 @@ namespace _07_StreamingContent_Repository
         //accessor // return type // name (parameters)
         public Show GetShowByTitle(string title)
         {
-            foreach(StreamingContent show in _contentDirectory)
+            foreach (StreamingContent show in _contentDirectory)
             {
-                if(show.Title.ToLower() == title.ToLower() && show.GetType() == typeof(Show))
+                if (show.Title.ToLower() == title.ToLower() && show.GetType() == typeof(Show))
                 {
                     return (Show)show;
                 }
@@ -130,7 +180,7 @@ namespace _07_StreamingContent_Repository
         {
             StreamingContent oldContent = GetContentByTitle(originalTitle);
 
-            if(oldContent != null)
+            if (oldContent != null)
             {
                 oldContent.Title = newContentValues.Title;
                 oldContent.Description = newContentValues.Description;
@@ -150,7 +200,7 @@ namespace _07_StreamingContent_Repository
         {
             StreamingContent contentToDelete = GetContentByTitle(titleToDelete);
 
-            if(contentToDelete == null)
+            if (contentToDelete == null)
             {
                 return false;
             }

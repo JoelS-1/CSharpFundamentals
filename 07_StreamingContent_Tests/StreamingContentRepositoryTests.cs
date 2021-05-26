@@ -24,6 +24,19 @@ namespace _07_StreamingContent_Tests
             Assert.IsTrue(addResult);
 
         }
+        [TestMethod]
+        public void MyTestMethod()
+        {
+            List<int> tableNumbers = new List<int>();
+            foreach (int firstNum in tableNumbers)
+            {
+                for (int secondNum = 1; secondNum <= 12; secondNum++)
+                {
+                    int total = firstNum * secondNum;
+                    Console.WriteLine($"{firstNum} X {secondNum} = {total}");
+                }
+            }
+        }
 
         [TestMethod]
         public void GetDirectory_ShouldReturnCorrectCollection()
